@@ -3,6 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "cdk-rtl-example": [
+        "dist/cdk-rtl-example/cdk-rtl-example",
+        "dist/cdk-rtl-example"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

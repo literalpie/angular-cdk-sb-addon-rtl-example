@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "cdk-rtl-example": {
+      "projectType": "library",
+      "root": "projects/cdk-rtl-example",
+      "sourceRoot": "projects/cdk-rtl-example/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/cdk-rtl-example/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cdk-rtl-example/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/cdk-rtl-example/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cdk-rtl-example/src/test.ts",
+            "tsConfig": "projects/cdk-rtl-example/tsconfig.spec.json",
+            "karmaConfig": "projects/cdk-rtl-example/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "cdk-rtl-example"
 }
