@@ -1,5 +1,12 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Directionality } from "@angular/cdk/bidi";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from "@angular/core";
+import { Direction, Directionality } from "@angular/cdk/bidi";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "storybook-button",
@@ -13,7 +20,7 @@ import { Directionality } from "@angular/cdk/bidi";
   </button>`,
   styleUrls: ["./button.css"],
 })
-export default class ButtonComponent {
+export default class ButtonComponent implements OnDestroy {
   /**
    * Is this the principal call to action on the page?
    */
@@ -54,9 +61,17 @@ export default class ButtonComponent {
     return ["storybook-button", `storybook-button--${this.size}`, mode];
   }
 
-  get direction() {
-    return this.directionality.value;
+  direction: Direction = "ltr";
+
+  private sub = new Subscription();
+
+  constructor(directionality: Directionality) {
+    this.sub = directionality.change.subscribe((dir) => {
+      this.direction = dir;
+    });
   }
 
-  constructor(private directionality: Directionality) {}
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }
