@@ -24,7 +24,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "id": "component-ButtonComponent-41e99db37ca257b955c9412b7b6b0359",
             "file": "stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -43,26 +43,26 @@
                 {
                     "name": "backgroundColor",
                     "description": "<p>What background color to use</p>\n",
-                    "line": 26,
+                    "line": 27,
                     "type": "string"
                 },
                 {
                     "name": "label",
-                    "defaultValue": "'Button'",
+                    "defaultValue": "\"Button\"",
                     "description": "<p>Button contents</p>\n",
-                    "line": 40
+                    "line": 41
                 },
                 {
                     "name": "primary",
                     "defaultValue": "false",
                     "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 20
+                    "line": 21
                 },
                 {
                     "name": "size",
-                    "defaultValue": "'medium'",
+                    "defaultValue": "\"medium\"",
                     "description": "<p>How large should the button be?</p>\n",
-                    "line": 32,
+                    "line": 33,
                     "type": "\"small\" | \"medium\" | \"large\""
                 }
             ],
@@ -71,7 +71,7 @@
                     "name": "onClick",
                     "defaultValue": "new EventEmitter<Event>()",
                     "description": "<p>Optional click handler</p>\n",
-                    "line": 46,
+                    "line": 47,
                     "type": "EventEmitter"
                 }
             ],
@@ -82,7 +82,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from \"@angular/core\";\nimport { Directionality } from \"@angular/cdk/bidi\";\n\n@Component({\n  selector: \"storybook-button\",\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: [\"./button.css\"],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: \"small\" | \"medium\" | \"large\" = \"medium\";\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = \"Button\";\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary\n      ? \"storybook-button--primary\"\n      : \"storybook-button--secondary\";\n\n    return [\"storybook-button\", `storybook-button--${this.size}`, mode];\n  }\n\n  get direction() {\n    return this.directionality.value;\n  }\n\n  constructor(private directionality: Directionality) {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -91,6 +91,26 @@
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "directionality",
+                        "type": "Directionality"
+                    }
+                ],
+                "line": 59,
+                "jsdoctags": [
+                    {
+                        "name": "directionality",
+                        "type": "Directionality",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "accessors": {
                 "classes": {
                     "name": "classes",
@@ -98,7 +118,16 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 48
+                        "line": 49
+                    }
+                },
+                "direction": {
+                    "name": "direction",
+                    "getSignature": {
+                        "name": "direction",
+                        "type": "",
+                        "returnType": "",
+                        "line": 57
                     }
                 }
             }
@@ -542,7 +571,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -698,9 +727,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
+                "coveragePercent": 71,
+                "coverageCount": "5/7",
+                "status": "good"
             },
             {
                 "filePath": "stories/header.component.ts",
