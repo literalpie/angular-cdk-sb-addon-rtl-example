@@ -12,7 +12,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/cdk-rtl-example/ng-package.json"
+            "project": "projects/cdk-rtl-example/ng-package.json",
+            "tsConfig": "projects/cdk-rtl-example/tsconfig.lib.json"
           },
           "configurations": {
             "production": {
