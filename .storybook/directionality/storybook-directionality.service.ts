@@ -26,7 +26,6 @@ export class StorybookDirectionalityService
   constructor(private zone: NgZone) {
     const directionalityChangeEvent = "storybook/rtl/rtl-update";
     const channel = addons.getChannel();
-    console.log(channel);
     const defaultDirection = "ltr";
     // channel.last returns an array that contains one element: the most recent event with the given ID.
     // This is useful because we need an initial value when you switch stories and this service gets re-initialized.

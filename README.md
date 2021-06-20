@@ -1,27 +1,12 @@
-# AngularCdkSbAddonRtlExample
+# Angular CDK and storybook-addon-rtl
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+This is a project that shows how to make the Directionality service of angular CDK work with the storybook-addon-rtl.
+The most important code is [here](./.storybook/directionality/storybook-directionality.service.ts)
 
-## Development server
+Normally, CDK expects you to use the `[dir]` directive, which provides itself as a `Directionality` provider and notifies of changes to direction.
+storybook-addon-rtl is meant to be platform agnostic, so it will not directly coordinate with CDK, but this project shows how you can hook it in yourself.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+While this example is specifically for CDK, similar fixes could be used in other cases.
+For example, you could watch for changes from the addon and reload the story each time there is a direction change.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+See it work by running `npm run storybook` looking at the button story.
